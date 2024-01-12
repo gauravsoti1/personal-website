@@ -9,6 +9,7 @@ type PostMetaType = {
   title: string;
   slug: string;
   description: string;
+  date: string;
 };
 type PostType = {
   id: string;
@@ -25,13 +26,13 @@ export const getSortedPostsData = (): PostType[] => {
     const fileContents = fs.readFileSync(fullPath, "utf-8");
 
     // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents) as PostMetaType;
+    const matterResult = matter(fileContents);
     // Combine the data with the id
     return {
       id,
       ...matterResult.data,
       content: matterResult.content,
-    };
+    } as PostType;
   });
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
 };
@@ -47,13 +48,13 @@ export const getSinglePostData = (slug: string): PostType => {
     const fileContents = fs.readFileSync(fullPath, "utf-8");
 
     // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents) as PostMetaType;
+    const matterResult = matter(fileContents);
     // Combine the data with the id
     return {
       id,
       ...matterResult.data,
       content: matterResult.content,
-    };
+    } as PostType;
   });
   return allPostsData.filter((post) => post.slug === slug)[0];
 };
