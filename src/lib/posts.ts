@@ -5,7 +5,16 @@ import path from "path";
 const postsDirectory = path.join(process.cwd(), "src/posts");
 console.log("postsDirectory", postsDirectory);
 
-export function getSortedPostsData() {
+type PostMetaType = {
+  title: string;
+  slug: string;
+  description: string;
+};
+type PostType = {
+  id: string;
+  content: string;
+} & PostMetaType;
+export const getSortedPostsData = (): PostType[] => {
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
     // Remove .md from file name to get id
@@ -16,7 +25,7 @@ export function getSortedPostsData() {
     const fileContents = fs.readFileSync(fullPath, "utf-8");
 
     // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents);
+    const matterResult = matter(fileContents) as PostMetaType;
     // Combine the data with the id
     return {
       id,
@@ -25,9 +34,9 @@ export function getSortedPostsData() {
     };
   });
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
-}
+};
 
-export function getSinglePostData(slug: string) {
+export const getSinglePostData = (slug: string): PostType => {
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
     // Remove .md from file name to get id
@@ -38,7 +47,7 @@ export function getSinglePostData(slug: string) {
     const fileContents = fs.readFileSync(fullPath, "utf-8");
 
     // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents);
+    const matterResult = matter(fileContents) as PostMetaType;
     // Combine the data with the id
     return {
       id,
@@ -47,4 +56,4 @@ export function getSinglePostData(slug: string) {
     };
   });
   return allPostsData.filter((post) => post.slug === slug)[0];
-}
+};

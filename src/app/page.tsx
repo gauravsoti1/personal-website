@@ -1,19 +1,13 @@
 import projects from "@/data/projects";
 import Image from "next/image";
-import Link from "next/link";
 import Projects from "./components/Projects";
+import NavBar from "./components/NavBar";
 
 export default async function Home() {
   return (
     <main className="flex flex-col">
       <div className="text-center w-screen h-screen bg-gradient-to-tr from-white to-blue-300 ">
-        <nav className="p-8 flex justify-between font-bold text-blue-950">
-          <a className="text-left">Gaurav Sobti</a>
-          <div className="inline-grid grid-cols-2 ml-4 gap-8">
-            <Link href="/">Home</Link>
-            <Link href="/blog">Blog</Link>
-          </div>
-        </nav>
+        <NavBar />
         <section className="h-2/3 flex flex-col justify-center items-center">
           <Image
             src="/myPic.jpg"
