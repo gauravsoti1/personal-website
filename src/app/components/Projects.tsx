@@ -12,7 +12,7 @@ function Project({ img, title, description, skills }: ProjectProps) {
       </div>
       <h2 className="text-lg font-medium mt-2">{title}</h2>
       <h6 className="text-sm">{description}</h6>
-      <div className="mt-2">
+      <div className="mt-2 flex flex-wrap gap-2">
         {skills.map((skill) => (
           <SkillTag key={skill} skill={skill} />
         ))}
@@ -21,12 +21,24 @@ function Project({ img, title, description, skills }: ProjectProps) {
   );
 }
 
+function AddingMore() {
+  return (
+    <Card>
+      <div className="relative aspect-video  flex justify-center items-center">
+        <h6 className="text-lg">Adding more soon ...</h6>
+      </div>
+      <h2 className="text-lg font-medium mt-2">Preparing Content</h2>
+    </Card>
+  );
+}
+
 function Projects({ projects }: { projects: ProjectProps[] }) {
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid sm:grid-cols-2 gap-4">
       {projects.map((project) => (
         <Project key={project.title} {...project} />
       ))}
+      <AddingMore />
     </div>
   );
 }
