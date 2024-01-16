@@ -2,11 +2,12 @@ import projects from "@/data/projects";
 import Image from "next/image";
 import Projects from "./components/Projects";
 import NavBar from "./components/NavBar";
+import FloatingOlaf from "./components/FloatingOlaf";
 
 export default async function Home() {
   return (
     <main className="flex flex-col">
-      <div className="text-center w-screen h-screen bg-gradient-to-tr from-white to-blue-300 ">
+      <div className="text-center w-full h-screen bg-gradient-to-tr from-white to-blue-300 ">
         <NavBar />
         <section className="h-2/3 flex flex-col justify-center items-center">
           <div>
@@ -29,6 +30,7 @@ export default async function Home() {
           {<Projects projects={projects} />}
         </div>
       </section>
+      <FloatingOlaf />
     </main>
   );
 }
