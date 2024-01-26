@@ -10,8 +10,9 @@ type PostMetaType = {
   slug: string;
   description: string;
   date: string;
+  tags: string;
 };
-type PostType = {
+export type PostType = {
   id: string;
   content: string;
 } & PostMetaType;
