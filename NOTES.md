@@ -36,3 +36,14 @@ A) Make sure you have a list with `-` and then create brackets with `space` for 
 - [ ]
 - [x]
 ```
+
+Q) How to add a custom meta tag in a static way?
+A) For it to be on the home page, from root layout file, do this:
+```typescript
+export const metadata: Metadata = {
+  other: {
+    "google-site-verification": "ds-l9Fc",
+  },
+};
+```
+it is to be added inside the other key
