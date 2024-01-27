@@ -6,15 +6,15 @@ type Props = {
 };
 export default function Page({ params }: Props) {
   const data = getSinglePostData(params.slug);
-  console.log("single post", data);
   return (
-    <div className="lg:max-w-4xl mx-auto p-8 bg-white ">
-      <h1 className="mb-1 text-2xl font-bold">{data.title}</h1>
-      <div className="mb-8">
+    <div className="lg:max-w-4xl mx-auto p-8 bg-white shadow-xl">
+      <h1 className="mb-1 text-3xl font-bold">{data.title}</h1>
+      <div className="mb-4 ">
         <span className="text-sm ">
-          Updated at: <i>{data.date}</i>
+          Updated at: <i>{new Date(data.date).toDateString()}</i>
         </span>
       </div>
+      <hr className="pb-4" />
       <Markdown>{data.content}</Markdown>
     </div>
   );

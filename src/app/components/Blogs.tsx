@@ -3,6 +3,7 @@ import { PostType } from "@/lib/posts";
 import Link from "next/link";
 import React, { useMemo, useState } from "react";
 import Card from "./Card";
+import { generateBlogDetailPath } from "@/lib/urlHelper";
 
 const textClass = "font-medium text-white";
 const hoverGradient =
@@ -19,7 +20,7 @@ function Blogs({ posts }: { posts: PostType[] }) {
   );
   return (
     <section className="p-8">
-      <h2 className="text-2xl mb-4 ">Blog</h2>
+      <h2 className="text-xl mb-4 ">Blog</h2>
       <div className="grid grid-cols-2 mb-4 gap-2">
         <button
           className={` ${
@@ -44,7 +45,7 @@ function Blogs({ posts }: { posts: PostType[] }) {
       </div>
       <ul className="list-none grid md:grid-cols-2 xl:grid-cols-3 gap-4">
         {filteredPosts.map(({ id, title, slug, description }) => (
-          <Link key={id} href={`/blog/${slug}`}>
+          <Link key={id} href={generateBlogDetailPath(slug)}>
             <Card>
               <h6 className="text-lg font-medium"> {title} </h6>
               {description}
