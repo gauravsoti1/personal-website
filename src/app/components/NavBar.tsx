@@ -7,6 +7,7 @@ function NavBar() {
       <a className="text-left">Gaurav Sobti</a>
       <div className="inline-grid grid-cols-2 ml-4 gap-8">
         <Link href="/">Home</Link>
+        {/* <Link href="/learn">Learn</Link> */}
         <Link href="/blog">Blog</Link>
       </div>
     </nav>

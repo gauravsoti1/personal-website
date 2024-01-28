@@ -43,7 +43,7 @@ function Blogs({ posts }: { posts: PostType[] }) {
           Life
         </button>
       </div>
-      <ul className="list-none grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <ul className="list-none grid md:grid-cols-2 xl:grid-cols-3 gap-4 pl-0">
         {filteredPosts.map(({ id, title, slug, description }) => (
           <Link key={id} href={generateBlogDetailPath(slug)}>
             <Card>
