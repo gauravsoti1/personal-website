@@ -23,6 +23,10 @@
       transform: rotateZ(40deg);
     }
   }
+
+  .snowflakes {
+    overflow: hidden;
+  }
   /* .cloud::after,
   .cloud::before {
     content: "";

@@ -6,6 +6,7 @@ type QA = {
 
 const data: QA[] = [
   {
+    tags: ["seo", "nextjs"],
     question: "How to create sitemap in Next JS when using app router?",
     answer: `Create a \`sitemap.ts\` file in app directory
   Sample code for blogs:
