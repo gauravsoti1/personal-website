@@ -3,14 +3,28 @@ import Card from "./Card";
 import Image from "next/image";
 import SkillTag from "./SkillTag";
 import { ProjectType as ProjectProps } from "../../data/projects";
+import Link from "next/link";
 
-function Project({ img, title, description, skills }: ProjectProps) {
+function Project({ img, title, description, skills, codeLink }: ProjectProps) {
   return (
     <Card>
       <div className="relative aspect-video">
         <Image src={img} fill alt={`image of ${title}`} />
       </div>
-      <h2 className="text-lg font-medium mt-2">{title}</h2>
+      <h2 className="text-lg font-medium mt-2">
+        {title}{" "}
+        {codeLink && (
+          <Link
+            className="text-sm text-blue-950"
+            target="_blank"
+            href={codeLink}
+          >
+            {"("}
+            <span className="underline">Code</span>
+            {")"}
+          </Link>
+        )}
+      </h2>
       <h6 className="text-sm">{description}</h6>
       <div className="mt-2 flex flex-wrap gap-2">
         {skills.map((skill) => (

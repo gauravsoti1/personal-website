@@ -47,3 +47,6 @@ export const metadata: Metadata = {
 };
 ```
 it is to be added inside the other key
+
+Q) How to verify your website on google search console?
+A) There are many methods, I added a google verification meta tag on the home page

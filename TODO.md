@@ -1,3 +1,3 @@
 - [ ] Add favico which will be my disney image
 - [ ] Add other icons that go with favico
-- [ ] 
+- [ ] Add github code link to projects
