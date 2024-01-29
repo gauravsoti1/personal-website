@@ -1,15 +1,28 @@
 import React from "react";
 import Card from "./Card";
-import Image from "next/image";
 import SkillTag from "./SkillTag";
 import { ProjectType as ProjectProps } from "../../data/projects";
 import Link from "next/link";
 
-function Project({ img, title, description, skills, codeLink }: ProjectProps) {
+function Project({
+  video,
+  title,
+  description,
+  skills,
+  codeLink,
+}: ProjectProps) {
   return (
     <Card>
       <div className="relative aspect-video">
-        <Image src={img} fill alt={`image of ${title}`} />
+        <video
+          autoPlay
+          // controls
+          loop
+          muted
+          playsInline
+        >
+          <source src={video} type="video/webm" />
+        </video>
       </div>
       <h2 className="text-lg font-medium mt-2">
         {title}{" "}

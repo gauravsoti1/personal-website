@@ -1,5 +1,5 @@
 export type ProjectType = {
-  img: string;
+  video: string;
   title: string;
   description: string;
   skills: string[];
@@ -8,7 +8,7 @@ export type ProjectType = {
 
 const projects: ProjectType[] = [
   {
-    img: "/sanjeevani-ui.gif",
+    video: "/sanjeevani-ui.webm",
     title: "Sanjeevani",
     description:
       "A hospital website using nextjs. Single handedly executed project covering design(figma), development, testing(react-testing-library), deployment and maintenance. ",
@@ -25,7 +25,7 @@ const projects: ProjectType[] = [
     codeLink: "https://github.com/gauravsoti1/sanjeevani",
   },
   {
-    img: "/sanjeevani-cms.gif",
+    video: "/sanjeevani-cms.webm",
     title: "Sanjeevani-cms",
     description: "A cms system using strapi",
     skills: ["strapi", "cms", "api", "aws"],
