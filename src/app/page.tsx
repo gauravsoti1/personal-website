@@ -9,7 +9,7 @@ import myPic from "./myPic.jpg";
 export default async function Home() {
   return (
     <main className="flex flex-col">
-      <div className="text-center w-full h-screen bg-gradient-to-tr from-white to-blue-300">
+      <div className="text-center w-full h-screen bg-gradient-to-tr from-white to-blue-300 ">
         <NavBar />
         <section
           id="heroSection"
@@ -21,9 +21,8 @@ export default async function Home() {
             priority
             // sizes="(max-width: 768px) 40%, 10%"
             src={myPic}
-            objectFit="contain"
             alt="Gaurav Sobti pic"
-            className="rounded-full shadow-xl mb-4 shadow-yellow-50  hover:scale-105 w-[40%] md:w-[25%] lg:w-[20%] xl:w-[15%] 2xl:w-[10%] h-[auto]"
+            className="rounded-full shadow-xl mb-4 shadow-yellow-50 object-contain hover:scale-105 w-[40%] md:w-[25%] lg:w-[20%] xl:w-[15%] 2xl:w-[10%] h-[auto]"
             placeholder="blur"
           />
           <h2 className="text-xl xl:text-3xl leading-10 lg:text-5xl lg:leading-[4rem]">

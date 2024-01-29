@@ -28,7 +28,8 @@ Q) How to generate metadata?
 A) https://nextjs.org/docs/app/building-your-application/optimizing/metadata
 
 Q) Where and how to add icons like favico?
-A) https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons
+A) You can add favico, icon or apple-icon in app directory and it will be added to the html head automatically.
+https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons
 
 Q) How to add a todo list in markdown file?
 A) Make sure you have a list with `-` and then create brackets with `space` for unchecked and brackets with `x` for checked

@@ -17,7 +17,7 @@ function HeroSectionSnowflake() {
   return (
     <div
       id="snowflakes-container"
-      className="w-[90%] h-full mx-0 pointer-events-none absolute top-0 left-12 right-12"
+      className="w-[80%] md:w-[90%] h-[90vh] md:h-full mx-0 pointer-events-none absolute top-0 left-4 md:left-12 "
     >
       {" "}
     </div>
