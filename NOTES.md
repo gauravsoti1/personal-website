@@ -94,6 +94,7 @@ A) Use PrismLight and register the languages you want to highlight.
 ```
 
 Q) How to tell typescript compiler that the value won't be null or undefined when it's not able to infer itself?
+Tags) Typescript
 A) Just use non-null assertion operator: `!`
 ```typescript
     // Compiled with --strictNullChecks

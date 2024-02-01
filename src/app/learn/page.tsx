@@ -11,7 +11,6 @@ function Learn() {
       return tagsSet;
     }, new Set<string>())
   );
-  console.log("allTags", allTags);
   return (
     <section className="lg:max-w-6xl mx-auto p-8 ">
       <div className="mb-12">
