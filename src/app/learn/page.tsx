@@ -1,10 +1,17 @@
 import React from "react";
-import QuestionAnswer from "../components/QuestionAnswer";
 import "./index.css";
 import { getQuestionsData } from "@/lib/questions";
+import QuestionAnswerFilterView from "./QuestionAnswerFilterView";
 
 function Learn() {
   const questionAnswersData = getQuestionsData();
+  const allTags = Array.from(
+    questionAnswersData.reduce((tagsSet, currentQA) => {
+      currentQA.tags?.map((tag) => tagsSet.add(tag));
+      return tagsSet;
+    }, new Set<string>())
+  );
+  console.log("allTags", allTags);
   return (
     <section className="lg:max-w-6xl mx-auto p-8 ">
       <div className="mb-12">
@@ -13,11 +20,10 @@ function Learn() {
           Best way to learn is through questions and answers
         </p>
       </div>
-      <div className="mt-4">
-        {questionAnswersData.map((qa, index) => (
-          <QuestionAnswer key={index} questionAnswer={qa} />
-        ))}
-      </div>
+      <QuestionAnswerFilterView
+        allTags={allTags}
+        questionAnswersData={questionAnswersData}
+      />
     </section>
   );
 }

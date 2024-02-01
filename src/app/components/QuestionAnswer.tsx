@@ -5,6 +5,13 @@ import Markdown from "react-markdown";
 import SkillTag from "./SkillTag";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import remarkGfm from "remark-gfm";
+// import tsx from "react-syntax-highlighter/dist/esm/languages/prism/tsx";
+// import jsx from "react-syntax-highlighter/dist/esm/languages/prism/jsx";
+// import typescript from "react-syntax-highlighter/dist/esm/languages/prism/typescript";
+
+// SyntaxHighlighter.registerLanguage("jsx", jsx);
+// SyntaxHighlighter.registerLanguage("tsx", tsx);
+// SyntaxHighlighter.registerLanguage("typescript", typescript);
 
 function QuestionAnswer({ questionAnswer }: { questionAnswer: QA }) {
   const [isAnswerVisible, setAnswerVisibility] = useState(false);

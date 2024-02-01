@@ -11,6 +11,7 @@ type PostMetaType = {
   description: string;
   date: string;
   tags: string;
+  hide: boolean;
 };
 export type PostType = {
   id: string;
@@ -35,7 +36,9 @@ export const getSortedPostsData = (): PostType[] => {
       content: matterResult.content,
     } as PostType;
   });
-  return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+  return allPostsData
+    .filter((post) => !post.hide)
+    .sort((a, b) => (a.date < b.date ? 1 : -1));
 };
 
 export const getSinglePostData = (slug: string): PostType => {

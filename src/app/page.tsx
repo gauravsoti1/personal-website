@@ -16,10 +16,7 @@ export default async function Home() {
           className="h-2/3 flex flex-col justify-center items-center "
         >
           <Image
-            width={384}
-            height={512}
             priority
-            // sizes="(max-width: 768px) 40%, 10%"
             src={myPic}
             alt="Gaurav Sobti pic"
             className="rounded-full shadow-xl mb-4 shadow-yellow-50 object-contain hover:scale-105 w-[40%] md:w-[25%] lg:w-[20%] xl:w-[15%] 2xl:w-[10%] h-[auto]"
