@@ -17,14 +17,15 @@ function QuestionAnswer({ questionAnswer }: { questionAnswer: QA }) {
   const [isAnswerVisible, setAnswerVisibility] = useState(false);
   return (
     <div className="border-b border-blue-900 pb-4 mb-4">
-      <div className="font-medium flex gap-4">
-        <Markdown className="text-lg">{questionAnswer.question}</Markdown>{" "}
-        <div className="flex gap-2 items-center">
-          {questionAnswer.tags?.map((tag, index) => (
-            <SkillTag key={index} skill={tag} />
-          ))}
-        </div>
+      <div className="flex gap-2 items-center flex-wrap">
+        {questionAnswer.tags?.map((tag, index) => (
+          <SkillTag dense={true} key={index} skill={tag} />
+        ))}
       </div>
+      <div className="font-medium ">
+        <Markdown className="text-lg">{questionAnswer.question}</Markdown>{" "}
+      </div>
+
       <button
         className="text-blue-700"
         onClick={() => setAnswerVisibility((isVisible) => !isVisible)}

@@ -45,7 +45,11 @@ function Blogs({ posts }: { posts: PostType[] }) {
       </div>
       <ul className="list-none grid md:grid-cols-2 xl:grid-cols-3 gap-4 pl-0">
         {filteredPosts.map(({ id, title, slug, description }) => (
-          <Link key={id} href={generateBlogDetailPath(slug)}>
+          <Link
+            className="no-underline"
+            key={id}
+            href={generateBlogDetailPath(slug)}
+          >
             <Card>
               <h6 className="text-lg font-medium"> {title} </h6>
               {description}

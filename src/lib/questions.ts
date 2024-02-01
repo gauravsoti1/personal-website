@@ -4,7 +4,6 @@ import matter from "gray-matter";
 import path from "path";
 
 const notesCwd = path.join(process.cwd(), "NOTES.md");
-console.log("notesCwd", notesCwd);
 
 export type QuestionType = {
   content: string;

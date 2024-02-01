@@ -34,7 +34,8 @@ function QuestionAnswerFilterView({ allTags, questionAnswersData }: Props) {
 
   return (
     <div className="mt-4">
-      <div className="flex gap-2 my-4">
+      <div className="flex gap-2 my-4 flex-wrap">
+        <span>Filter: </span>
         {allTags.map((tag, index) => (
           <SkillTagFilter
             isSelected={selectedTags.get(index)!}

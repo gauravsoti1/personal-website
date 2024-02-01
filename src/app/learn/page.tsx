@@ -16,7 +16,8 @@ function Learn() {
       <div className="mb-12">
         <h1 className="text-6xl">Learn</h1>
         <p className="text-sm">
-          Best way to learn is through questions and answers
+          Best way to learn is through experience oritented questions and
+          answers
         </p>
       </div>
       <QuestionAnswerFilterView
