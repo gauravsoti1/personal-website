@@ -1,11 +1,13 @@
-import React from "react";
-import Card from "./Card";
-import SkillTag from "./SkillTag";
-import { ProjectType as ProjectProps } from "../../data/projects";
-import Link from "next/link";
+import React from 'react';
+import Card from './Card';
+import SkillTag from './SkillTag';
+import { ProjectType as ProjectProps } from '../../data/projects';
+import Link from 'next/link';
+import ProjectVideo from './ProjectVideo';
+import ProjectImage from './ProjectImage';
 
 function Project({
-  video,
+  media,
   title,
   description,
   skills,
@@ -13,28 +15,19 @@ function Project({
 }: ProjectProps) {
   return (
     <Card>
-      <div className="relative aspect-video">
-        <video
-          autoPlay
-          // controls
-          loop
-          muted
-          playsInline
-        >
-          <source src={video} type="video/webm" />
-        </video>
-      </div>
+      {media.type === 'video' && <ProjectVideo src={media.src} />}
+      {media.type === 'image' && <ProjectImage src={media.src} />}
       <h2 className="text-lg font-medium mt-2">
-        {title}{" "}
+        {title}{' '}
         {codeLink && (
           <Link
             className="text-sm text-blue-950"
             target="_blank"
             href={codeLink}
           >
-            {"("}
+            {'('}
             <span className="underline">Code</span>
-            {")"}
+            {')'}
           </Link>
         )}
       </h2>
