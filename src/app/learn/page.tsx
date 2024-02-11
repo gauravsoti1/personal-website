@@ -1,7 +1,7 @@
-import React from "react";
-import "./index.css";
-import { getQuestionsData } from "@/lib/questions";
-import QuestionAnswerFilterView from "./QuestionAnswerFilterView";
+import React from 'react';
+import './index.css';
+import { getQuestionsData } from '@/lib/questions';
+import QuestionAnswerFilterView from './QuestionAnswerFilterView';
 
 function Learn() {
   const questionAnswersData = getQuestionsData();
@@ -9,8 +9,8 @@ function Learn() {
     questionAnswersData.reduce((tagsSet, currentQA) => {
       currentQA.tags?.map((tag) => tagsSet.add(tag));
       return tagsSet;
-    }, new Set<string>())
-  );
+    }, new Set<string>()),
+  ).sort((a, b) => a.localeCompare(b));
   return (
     <section className="lg:max-w-6xl mx-auto p-8 ">
       <div className="mb-12">
