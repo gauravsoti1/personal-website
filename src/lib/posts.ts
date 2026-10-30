@@ -1,4 +1,8 @@
-import { prisma } from "@/lib/prisma";
+import fs from "fs";
+import matter from "gray-matter";
+import path from "path";
+
+const postsDirectory = path.join(process.cwd(), "src/posts");
 
 export type PostType = {
   id: string;
@@ -8,47 +12,33 @@ export type PostType = {
   date: string;
   tags: string;
   content: string;
-  hide: boolean;
+  hide?: boolean;
 };
 
-const toPostType = (post: {
-  id: string;
-  title: string;
-  slug: string;
-  description: string;
-  date: Date;
-  tags: string;
-  content: string;
-  hide: boolean;
-}): PostType => ({
-  id: post.id,
-  title: post.title,
-  slug: post.slug,
-  description: post.description,
-  date: post.date.toISOString().slice(0, 10),
-  tags: post.tags,
-  content: post.content,
-  hide: post.hide,
-});
+const readAllPosts = (): PostType[] => {
+  const fileNames = fs.readdirSync(postsDirectory);
+  return fileNames.map((fileName) => {
+    const id = fileName.replace(/\.md$/, "");
+    const fullPath = path.join(postsDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, "utf-8");
+    const matterResult = matter(fileContents);
+    return {
+      id,
+      ...matterResult.data,
+      content: matterResult.content,
+    } as PostType;
+  });
+};
 
 export const getSortedPostsData = async (): Promise<PostType[]> => {
-  const posts = await prisma.post.findMany({
-    where: { hide: false },
-    orderBy: { date: "desc" },
-  });
-  return posts.map(toPostType);
-};
-
-export const getAllPostsData = async (): Promise<PostType[]> => {
-  const posts = await prisma.post.findMany({
-    orderBy: { date: "desc" },
-  });
-  return posts.map(toPostType);
+  return readAllPosts()
+    .filter((post) => !post.hide)
+    .sort((a, b) => (a.date < b.date ? 1 : -1));
 };
 
 export const getSinglePostData = async (
   slug: string,
 ): Promise<PostType | null> => {
-  const post = await prisma.post.findUnique({ where: { slug } });
-  return post ? toPostType(post) : null;
+  const post = readAllPosts().find((post) => post.slug === slug);
+  return post ?? null;
 };
