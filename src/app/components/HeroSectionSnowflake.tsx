@@ -1,25 +1,45 @@
-"use client";
-import Snowflakes from "magic-snowflakes";
-import React, { useEffect } from "react";
+'use client';
+import Snowflakes from 'magic-snowflakes';
+import React, { useEffect, useRef } from 'react';
 
 function HeroSectionSnowflake() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    console.log("Inside useEffect to create snowflakes");
+    const container = containerRef.current;
+    if (!container) return;
+
     const snowflakes = new Snowflakes({
-      container:
-        document.querySelector<HTMLElement>("#snowflakes-container") ||
-        undefined,
+      container,
       autoResize: false,
     });
     snowflakes.start();
-    return () => snowflakes.destroy();
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          snowflakes.start();
+        } else {
+          snowflakes.stop();
+        }
+      },
+      { threshold: 0 },
+    );
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+      snowflakes.destroy();
+    };
   }, []);
+
   return (
     <div
+      ref={containerRef}
       id="snowflakes-container"
       className="w-[80%] md:w-[90%] h-[90vh] md:h-full mx-0 pointer-events-none absolute top-0 left-4 md:left-12 "
     >
-      {" "}
+      {' '}
     </div>
   );
 }

@@ -3,11 +3,17 @@ import React from 'react';
 
 type Props = {
   src: string;
+  alt?: string;
 };
-function ProjectImage({ src }: Props) {
+function ProjectImage({ src, alt = "Project screenshot" }: Props) {
   return (
-    <div className="relative aspect-video bg-black hover:scale-150">
-      <Image fill className="object-contain" src={src} alt="project image" />;
+    <div className="relative aspect-video overflow-hidden bg-slate-100">
+      <Image
+        fill
+        className="object-contain transition-transform duration-300 group-hover:scale-105"
+        src={src}
+        alt={alt}
+      />
     </div>
   );
 }
